@@ -699,13 +699,14 @@ html[data-theme="dark"] .mobile-nav a:not(.active):hover {
 }
 
 
-
-/* Fix PDF Print button text wrapping */
-.result-actions {
-  grid-template-columns: minmax(0, 1fr) max-content 44px 44px;
+/* Fix PDF / Print button width */
+.report-actions > button:nth-child(2) {
+  width: auto;
+  min-width: 135px;
+  flex: 0 0 auto;
+  white-space: nowrap;
 }
 
-.result-actions > button:nth-child(2) {
-  white-space: nowrap;
-  padding-inline: 12px;
+.report-actions > button:nth-child(2) svg {
+  flex-shrink: 0;
 }
