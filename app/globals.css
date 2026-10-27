@@ -697,3 +697,15 @@ html[data-theme="dark"] .mobile-nav a:not(.active):hover {
   background: #303b2c;
   color: #ffffff;
 }
+
+
+
+/* Fix PDF Print button text wrapping */
+.result-actions {
+  grid-template-columns: minmax(0, 1fr) max-content 44px 44px;
+}
+
+.result-actions > button:nth-child(2) {
+  white-space: nowrap;
+  padding-inline: 12px;
+}
