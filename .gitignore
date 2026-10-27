@@ -1,0 +1,31 @@
+
+# Dependencies
+node_modules/
+
+# Next.js build output
+.next/
+out/
+
+# Netlify local files
+.netlify/
+
+# Environment variables
+.env*
+!.env.example
+
+# Debug logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# Internal project documentation
+SEO_MONETIZATION_ROADMAP.md
+SETUP_SINHALA.md
+
+# TypeScript build cache
+*.tsbuildinfo

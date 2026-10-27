@@ -1,0 +1,9 @@
+{
+  "name": "Home Project Calculator",
+  "short_name": "HomeCalc",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f4f1e9",
+  "theme_color": "#151713",
+  "description": "Home improvement calculators and project planning guides"
+}

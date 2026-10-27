@@ -1,0 +1,3 @@
+import type { Metadata } from 'next';
+export const metadata:Metadata={title:'Affiliate Disclosure'};
+export default function Affiliate(){return <div className="legal-page container"><h1>Affiliate Disclosure</h1><p>Home Project Calculator may earn a commission when a visitor purchases through certain product or service links, at no additional cost to the visitor. Affiliate relationships do not change calculator formulas.</p><h2>Editorial approach</h2><p>Recommendations should be selected for relevance to the project and clearly separated from calculated results. Sponsored placements should be labeled.</p><p>This starter project ships without live affiliate links. Add only programs you have been approved to use and follow each program’s disclosure requirements.</p></div>}
