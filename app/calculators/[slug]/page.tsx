@@ -49,6 +49,87 @@ export function generateStaticParams() {
   }));
 }
 
+const calculatorSeo: Record<
+  string,
+  { title: string; description: string }
+> = {
+  "paint-calculator": {
+    title: "Free Paint Calculator – Estimate Paint Needed",
+    description:
+      "Estimate how much paint you need for your project. Plan wall coverage, paint quantities, and supplies with our free paint calculator.",
+  },
+  "flooring-calculator": {
+    title: "Flooring Calculator – Estimate Area & Cost",
+    description:
+      "Calculate flooring area and estimate material costs. Plan flooring quantities, waste allowances, and your project budget.",
+  },
+  "tile-calculator": {
+    title: "Free Tile Calculator – Estimate Tiles Needed",
+    description:
+      "Estimate how many tiles you need for floors or walls. Calculate coverage and plan extra materials for cuts and waste.",
+  },
+  "concrete-calculator": {
+    title: "Concrete Calculator – Estimate Concrete Volume",
+    description:
+      "Estimate the concrete volume needed for your project using dimensions. Plan concrete quantities before placing an order.",
+  },
+  "gravel-calculator": {
+    title: "Gravel Calculator – Estimate Gravel Quantity",
+    description:
+      "Calculate how much gravel your project needs. Estimate material quantities for driveways, paths, and landscaping.",
+  },
+  "fence-calculator": {
+    title: "Fence Calculator – Estimate Fence Materials",
+    description:
+      "Plan your fencing project with a free fence calculator. Estimate fence measurements and required materials.",
+  },
+  "deck-calculator": {
+    title: "Deck Calculator – Estimate Decking Materials",
+    description:
+      "Estimate decking materials for your outdoor project. Plan deck dimensions, material quantities, and costs.",
+  },
+  "roofing-calculator": {
+    title: "Roofing Calculator – Estimate Roof Materials",
+    description:
+      "Estimate roof area and roofing material quantities. Plan waste allowances and materials for your roofing project.",
+  },
+  "moving-cost-calculator": {
+    title: "Moving Cost Calculator – Estimate Moving Expenses",
+    description:
+      "Estimate moving expenses and plan your relocation budget using our free online moving cost calculator.",
+  },
+  "electricity-cost-calculator": {
+    title: "Electricity Cost Calculator – Estimate Energy Costs",
+    description:
+      "Estimate electricity costs based on energy consumption and rates. Plan appliance usage and household energy expenses.",
+  },
+  "mulch-soil-calculator": {
+    title: "Mulch & Soil Calculator – Estimate Materials",
+    description:
+      "Estimate mulch and soil quantities for your garden or landscaping project. Plan coverage, depth, and material needs.",
+  },
+  "renovation-budget-calculator": {
+    title: "Renovation Budget Calculator – Estimate Costs",
+    description:
+      "Plan your home renovation budget. Estimate project expenses, allocate costs, and prepare for unexpected spending.",
+  },
+  "drywall-calculator": {
+    title: "Drywall Calculator – Estimate Drywall Sheets",
+    description:
+      "Estimate drywall material quantities for walls and ceilings. Plan sheet coverage and project requirements.",
+  },
+  "wallpaper-calculator": {
+    title: "Wallpaper Calculator – Estimate Wallpaper Rolls",
+    description:
+      "Estimate wallpaper requirements for your room. Plan wall coverage and wallpaper quantities before buying materials.",
+  },
+  "paver-calculator": {
+    title: "Paver Calculator – Estimate Pavers Needed",
+    description:
+      "Estimate paver quantities for patios, pathways, and outdoor surfaces. Plan project coverage and material needs.",
+  },
+};
+
 // ============================================
 // DYNAMIC SEO METADATA
 // ============================================
@@ -70,10 +151,14 @@ export async function generateMetadata({
     };
   }
 
+  const seo = calculatorSeo[calculator.slug];
+
   const title =
+    seo?.title ??
     `${calculator.title} – Free Project Estimator`;
 
-  const description = calculator.description;
+  const description =
+    seo?.description ?? calculator.description;
 
   const url = calculatorUrl(calculator.slug);
 
