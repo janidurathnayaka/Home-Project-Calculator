@@ -130,6 +130,56 @@ const calculatorSeo: Record<
   },
 };
 
+// Worked examples match the default values in lib/calculators.ts.
+// These examples are informational and do not change calculator logic.
+type CalculatorExample = {
+  title: string;
+  steps: string[];
+  result: string;
+  note: string;
+};
+
+const calculatorExamples: Record<string, CalculatorExample> = {
+  "paint-calculator": {
+    title: "Paint Calculator: Worked Example",
+    steps: [
+      "For a 14 ft × 12 ft room with 8 ft walls, the perimeter is 2 × (14 + 12) = 52 ft.",
+      "Gross wall area = 52 × 8 = 416 sq ft.",
+      "Subtract one 20 sq ft door and two 15 sq ft windows: 416 − 50 = 366 sq ft.",
+      "For two coats, the area to cover is 366 × 2 = 732 sq ft.",
+      "Add 10% waste: 732 × 1.10 = 805.2 sq ft.",
+      "At 350 sq ft per gallon, 805.2 ÷ 350 ≈ 2.30 gallons; round up to 3 gallons.",
+      "At $45 per gallon, the estimated paint purchase cost is 3 × $45 = $135.",
+    ],
+    result: "Estimated purchase: 3 gallons of paint for $135.",
+    note: "Example based on default inputs, not a live quote. Primer, labor and surface preparation are excluded; verify coverage on the paint label.",
+  },
+  "flooring-calculator": {
+    title: "Flooring Calculator: Worked Example",
+    steps: [
+      "For a rectangular room measuring 16 ft × 12 ft, floor area = 192 sq ft.",
+      "Add a 10% waste allowance: 192 × 1.10 = 211.2 sq ft.",
+      "If a box covers 22.5 sq ft, 211.2 ÷ 22.5 ≈ 9.39 boxes.",
+      "Round up to 10 whole boxes, providing 225 sq ft of purchased coverage.",
+      "At $58 per box, the material estimate is 10 × $58 = $580.",
+    ],
+    result: "Estimated purchase: 10 flooring boxes for $580.",
+    note: "Example based on default inputs. Underlayment, trim, labor and taxes are not included. Check your flooring product's box coverage.",
+  },
+  "concrete-calculator": {
+    title: "Concrete Calculator: Worked Example",
+    steps: [
+      "For a slab measuring 20 ft × 10 ft and 4 inches thick, convert thickness: 4 ÷ 12 = 0.3333 ft.",
+      "Concrete volume = 20 × 10 × (4 ÷ 12) ≈ 66.67 cubic feet.",
+      "Convert to cubic yards: 66.67 ÷ 27 ≈ 2.47 yd³.",
+      "Allow 10% extra: (20 × 10 × (4 ÷ 12) ÷ 27) × 1.10 ≈ 2.72 yd³.",
+      "At $165 per yd³, estimated ready-mix material cost ≈ $448.15.",
+    ],
+    result: "Estimated order volume: 2.72 yd³; ready-mix material estimate: $448.15.",
+    note: "Example based on default inputs. Actual ordering may require supplier increments, minimum loads, delivery charges, reinforcement and labor. Use engineered requirements for structural work.",
+  },
+};
+
 // ============================================
 // DYNAMIC SEO METADATA
 // ============================================
@@ -223,6 +273,7 @@ export default async function CalculatorPage({
   }
 
   const currentUrl = calculatorUrl(c.slug);
+  const pageDescription = calculatorSeo[c.slug]?.description ?? c.description;
 
   // ==========================================
   // FIND RELATED COST GUIDE
@@ -257,7 +308,7 @@ export default async function CalculatorPage({
 
     name: c.title,
 
-    description: c.description,
+    description: pageDescription,
 
     url: currentUrl,
 
@@ -289,7 +340,7 @@ export default async function CalculatorPage({
 
     name: c.title,
 
-    description: c.description,
+    description: pageDescription,
 
     url: currentUrl,
 
@@ -468,11 +519,31 @@ export default async function CalculatorPage({
             HOW IT WORKS
           </span>
 
-          <h2>
-            Plan the quantity before you shop
-          </h2>
+          <h2>How to use the {c.title}</h2>
 
           <p>{c.intro}</p>
+
+          {/* Worked examples are shown only where the formula is verified. */}
+          {calculatorExamples[c.slug] && (
+            <section aria-label="Worked calculation example">
+              <h3>{calculatorExamples[c.slug].title}</h3>
+              <p>
+                This worked example uses the calculator's default values so
+                you can follow the calculation before entering your own figures.
+              </p>
+              <ol>
+                {calculatorExamples[c.slug].steps.map((step) => (
+                  <li key={step}>{step}</li>
+                ))}
+              </ol>
+              <p>
+                <strong>{calculatorExamples[c.slug].result}</strong>
+              </p>
+              <p className="estimate-disclaimer">
+                {calculatorExamples[c.slug].note}
+              </p>
+            </section>
+          )}
 
           {/* ASSUMPTIONS */}
 
