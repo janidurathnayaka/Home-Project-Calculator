@@ -1,91 +1,136 @@
-/* Privacy UI is local to this component; no site-wide CSS changes needed. */
+
+/* Cookie consent banner */
+
 .banner {
   position: fixed;
   z-index: 1000;
+
   right: 20px;
   bottom: 20px;
+
   width: min(560px, calc(100vw - 40px));
   padding: 20px;
+
   display: flex;
   flex-direction: column;
   gap: 16px;
+
   background: #fffef9;
   color: #151713;
+
   border: 1px solid #d9d6cc;
   border-radius: 16px;
+
   box-shadow: 0 20px 65px rgba(0, 0, 0, 0.22);
 }
+
+/* Banner description */
+
 .copy strong {
   display: block;
   font-size: 17px;
   margin-bottom: 8px;
 }
+
 .copy p {
   margin: 0;
   color: #42483e;
   font-size: 14px;
   line-height: 1.6;
 }
+
 .copy a {
   text-decoration: underline;
   text-underline-offset: 3px;
   font-weight: 700;
 }
+
+/* Consent action buttons */
+
 .actions {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
 }
+
 .actions button,
 .manage {
   border-radius: 10px;
   font: inherit;
   font-size: 13px;
   font-weight: 800;
+
   cursor: pointer;
   min-height: 44px;
   padding: 11px 15px;
 }
+
 .actions button {
   flex: 1 1 180px;
 }
+
+/* Reject button */
+
 .reject {
   background: #fffef9;
   color: #151713;
   border: 1px solid #979c90;
 }
+
+/* Accept button */
+
 .accept {
   background: #151713;
   color: #c8ff46;
   border: 1px solid #151713;
 }
+
+/* Privacy choices button inside the footer */
+
 .manage {
-  position: fixed;
-  z-index: 1000;
-  right: 15px;
-  bottom: 15px;
-  background: #fffef9;
-  color: #151713;
-  border: 1px solid #a1a79a;
-  box-shadow: 0 5px 16px rgba(0, 0, 0, 0.12);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  position: static;
+  margin-left: auto;
+
+  min-height: 36px;
+  padding: 6px 10px;
+
+  background: transparent;
+  color: #dce0d7;
+
+  border: 1px solid #6e7967;
+  border-radius: 10px;
+
+  box-shadow: none;
 }
+
+/* Keyboard accessibility */
+
 .actions button:focus-visible,
 .manage:focus-visible,
 .copy a:focus-visible {
   outline: 3px solid #647d1d;
   outline-offset: 3px;
 }
+
+/* Responsive layout */
+
 @media (max-width: 600px) {
   .banner {
     right: 10px;
     bottom: 10px;
+
     width: calc(100vw - 20px);
     padding: 16px;
+
     max-height: min(80vh, 620px);
     overflow-y: auto;
   }
+
   .manage {
-    right: 10px;
-    bottom: 10px;
+    margin-left: 0;
   }
 }
