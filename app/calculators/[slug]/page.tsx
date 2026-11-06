@@ -174,7 +174,7 @@ const calculatorExamples: Record<string, CalculatorExample> = {
       "Add one $180 gate: estimated listed-material cost = $2,204.",
     ],
     result: "Illustrative materials: 16 panels, 18 posts, 1 gate; $2,204.",
-    note: "The current model does not deduct gate width from fence length. Site corners, special posts, concrete, hardware and labor may change the result.",
+   note: "This example uses the original method with gate opening width set to zero. Enter a gate width to estimate reduced panel coverage. Gate locations, corners, concrete, hardware, and labor may change actual requirements.",
   },
   "deck-calculator": {
     title: "Deck Calculator: Worked Example",
